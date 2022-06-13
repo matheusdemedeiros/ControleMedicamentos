@@ -18,18 +18,19 @@ namespace ControleMedicamentos.Dominio.Tests.ModuloPaciente
         {
             //arrange
             var p1 = new Paciente("", "111111111111111");
-            //var p2 = new Paciente();
-            //p2.Nome = null;
+            var p2 = new Paciente();
+            p2.Nome = null;
+            p2.CartaoSUS = "111111111111111";
 
             ValidadorPaciente validador = new ValidadorPaciente();
 
             //action
             var resultado1 = validador.Validate(p1);
-            //var resultado2 = validador.Validate(p2);
+            var resultado2 = validador.Validate(p2);
 
             //assert
             Assert.AreEqual("O campo 'Nome do paciente' é obrigatório!", resultado1.Errors[0].ErrorMessage);
-            //Assert.AreEqual("O campo 'Nome do paciente' é obrigatório!", resultado2.Errors[0].ErrorMessage);
+            Assert.AreEqual("O campo 'Nome do paciente' é obrigatório!", resultado2.Errors[0].ErrorMessage);
         }
 
         [TestMethod]
@@ -51,37 +52,36 @@ namespace ControleMedicamentos.Dominio.Tests.ModuloPaciente
         public void Nome_do_paciente_nao_deve_ter_caracteres_especiais_ou_numeros()
         {
             //arrange
-           // var p1 = new Paciente("M@theus", "111111111111111");
+            var p1 = new Paciente("M@theus", "111111111111111");
             var p2 = new Paciente("Matheus123", "111111111111111");
 
             ValidadorPaciente validador = new ValidadorPaciente();
 
             //action
-            //var resultado1 = validador.Validate(p1);
+            var resultado1 = validador.Validate(p1);
             var resultado2 = validador.Validate(p2);
 
             //assert
-            //Assert.AreEqual("O campo 'Nome do paciente' não deve conter números ou caracteres especiais!", resultado1.Errors[0].ErrorMessage);
+            Assert.AreEqual("O campo 'Nome do paciente' não deve conter números ou caracteres especiais!", resultado1.Errors[0].ErrorMessage);
             Assert.AreEqual("O campo 'Nome do paciente' não deve conter números ou caracteres especiais!", resultado2.Errors[0].ErrorMessage);
         }
-
 
         [TestMethod]
         public void Cartao_SUS_deve_ser_obrigatorio()
         {
             //arrange
             var p1 = new Paciente("Matheus", "");
-            //var p2 = new Paciente("Matheus", null);
+            var p2 = new Paciente("Matheus", null);
 
             ValidadorPaciente validador = new ValidadorPaciente();
 
             //action
             var resultado1 = validador.Validate(p1);
-            //var resultado2 = validador.Validate(p2);
+            var resultado2 = validador.Validate(p2);
 
             //assert
             Assert.AreEqual("O campo 'Cartão SUS' é obrigatório!", resultado1.Errors[0].ErrorMessage);
-            //Assert.AreEqual("O campo 'Cartão SUS' é obrigatório", resultado2.Errors[0].ErrorMessage);
+            Assert.AreEqual("O campo 'Cartão SUS' é obrigatório!", resultado2.Errors[0].ErrorMessage);
         }
 
         [TestMethod]
@@ -100,9 +100,9 @@ namespace ControleMedicamentos.Dominio.Tests.ModuloPaciente
             var resultado3 = validador.Validate(p3);
 
             //assert
-            Assert.AreEqual("O campo 'Cartão SUS' deve ter somente 15 dígitos!", resultado1.Errors[0].ErrorMessage);
+            Assert.AreEqual("O campo 'Cartão SUS' deve ter 15 dígitos!", resultado1.Errors[0].ErrorMessage);
             Assert.AreEqual(0, resultado2.Errors.Count);
-            Assert.AreEqual("O campo 'Cartão SUS' deve ter somente 15 dígitos!", resultado3.Errors[0].ErrorMessage);
+            Assert.AreEqual("O campo 'Cartão SUS' deve ter 15 dígitos!", resultado3.Errors[0].ErrorMessage);
         }
 
         [TestMethod]
