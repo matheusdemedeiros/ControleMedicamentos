@@ -18,10 +18,11 @@ namespace ControleMedicamentos.Dominio.Compartilhado
         public static IRuleBuilder<T, string> Telefone<T>(this IRuleBuilder<T, string> ruleBuilder)
         {
             var options = ruleBuilder
-                .Matches(@"(\(?\d{2}\)?\s)?(\d{4,5}\-\d{4})");
+                .Matches(@"^\([1-9]{2}\) (?:[2-8]|9 [1-9])[0-9]{3}\-?[0-9]{4}$");
 
             return options;
         }
+
 
         public static IRuleBuilder<T, string> Url<T>(this IRuleBuilder<T, string> ruleBuilder)
         {

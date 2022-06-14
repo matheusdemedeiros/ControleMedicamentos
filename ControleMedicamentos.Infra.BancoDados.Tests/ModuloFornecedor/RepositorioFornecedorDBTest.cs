@@ -22,7 +22,7 @@ namespace ControleMedicamentos.Infra.BancoDados.Tests.ModuloFornecedor
         public void Deve_inserir_um_fornecedor_no_DB()
         {
             //arrange
-            Fornecedor novoFornecedor = new Fornecedor("Distribuidor A", "999568765", "distribuidorA@gmail.com", "Lages", "SC");
+            Fornecedor novoFornecedor = new Fornecedor("Distribuidor A", "(49) 9 9956-8765", "distribuidorA@gmail.com", "Lages", "SC");
 
             var repositorio = new RepositorioFornecedorDB();
 
@@ -40,12 +40,12 @@ namespace ControleMedicamentos.Infra.BancoDados.Tests.ModuloFornecedor
         public void Deve_editar_fornecedor_do_DB()
         {
             //arrange
-            Fornecedor novoFornecedor = new Fornecedor("Distribuidor A", "999568765", "distribuidorA@gmail.com", "Lages", "SC");
+            Fornecedor novoFornecedor = new Fornecedor("Distribuidor A", "(49) 9 9956-8765", "distribuidorA@gmail.com", "Lages", "SC");
             var repositorio = new RepositorioFornecedorDB();
             repositorio.Inserir(novoFornecedor);
             Fornecedor fornecedorAtualizado = repositorio.SelecionarPorId(novoFornecedor.Id);
             fornecedorAtualizado.Nome = "Distribuidor B";
-            fornecedorAtualizado.Telefone = "999568777";
+            fornecedorAtualizado.Telefone = "(41) 9 9956-8777";
             fornecedorAtualizado.Email = "distribuidorB@gmail.com";
             fornecedorAtualizado.Cidade = "Curitiba";
             fornecedorAtualizado.Estado = "PR";
@@ -62,7 +62,7 @@ namespace ControleMedicamentos.Infra.BancoDados.Tests.ModuloFornecedor
         public void Deve_excluir_fornecedor_do_DB()
         {
             //arrange
-            Fornecedor novoFornecedor = new Fornecedor("Distribuidor A", "999568765", "distribuidorA@gmail.com", "Lages", "SC");
+            Fornecedor novoFornecedor = new Fornecedor("Distribuidor A", "(49) 9 9956-8765", "distribuidorA@gmail.com", "Lages", "SC");
             var repositorio = new RepositorioFornecedorDB();
             repositorio.Inserir(novoFornecedor);
 
@@ -81,9 +81,9 @@ namespace ControleMedicamentos.Infra.BancoDados.Tests.ModuloFornecedor
             //arrange
             var repositorio = new RepositorioFornecedorDB();
 
-            Fornecedor f1 = new Fornecedor("Distribuidor A", "999568765", "distribuidorA@gmail.com", "Lages", "SC");
-            Fornecedor f2 = new Fornecedor("Distribuidor B", "988577766", "distribuidorB@gmail.com", "Curitibanos", "SC");
-            Fornecedor f3 = new Fornecedor("Distribuidor C", "984668881", "distribuidorC@gmail.com", "Fraiburgo", "SC");
+            Fornecedor f1 = new Fornecedor("Distribuidor A", "(49) 9 9956-8765", "distribuidorA@gmail.com", "Lages", "SC");
+            Fornecedor f2 = new Fornecedor("Distribuidor B", "(49) 9 8857-7766", "distribuidorB@gmail.com", "Curitibanos", "SC");
+            Fornecedor f3 = new Fornecedor("Distribuidor C", "(49) 9 8466-8881", "distribuidorC@gmail.com", "Fraiburgo", "SC");
 
             repositorio.Inserir(f1);
             repositorio.Inserir(f2);
@@ -104,7 +104,7 @@ namespace ControleMedicamentos.Infra.BancoDados.Tests.ModuloFornecedor
         {
             //arrange
             var repositorio = new RepositorioFornecedorDB();
-            Fornecedor f1 = new Fornecedor("Distribuidor A", "999568765", "distribuidorA@gmail.com", "Lages", "SC");
+            Fornecedor f1 = new Fornecedor("Distribuidor A", "(49) 9 9956-8765", "distribuidorA@gmail.com", "Lages", "SC");
 
             repositorio.Inserir(f1);
 
@@ -114,6 +114,5 @@ namespace ControleMedicamentos.Infra.BancoDados.Tests.ModuloFornecedor
             //assert
             Assert.AreEqual(f1, fornecedorEncontrado);
         }
-
     }
 }
