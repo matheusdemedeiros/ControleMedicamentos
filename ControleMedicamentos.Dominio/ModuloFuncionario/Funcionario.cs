@@ -1,4 +1,6 @@
-﻿namespace ControleMedicamentos.Dominio.ModuloFuncionario
+﻿using System;
+
+namespace ControleMedicamentos.Dominio.ModuloFuncionario
 {
     public class Funcionario : EntidadeBase<Funcionario>
     {
@@ -20,10 +22,23 @@
         
         public string Senha { get; set; }
 
+        public override bool Equals(object obj)
+        {
+            return obj is Funcionario funcionario &&
+                   Id == funcionario.Id &&
+                   Nome == funcionario.Nome &&
+                   Login == funcionario.Login &&
+                   Senha == funcionario.Senha;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, Nome, Login, Senha);
+        }
+
         public override string ToString()
         {
             return $"Id {Id} - Nome: {Nome} - Funcionario";
         }
-
     }
 }
