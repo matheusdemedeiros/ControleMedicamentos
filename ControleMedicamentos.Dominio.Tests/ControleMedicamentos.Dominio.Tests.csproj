@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <Folder Include="ModuloFornecedor\" />
-    <Folder Include="ModuloRequisicao\" />
   </ItemGroup>
 
 </Project>
