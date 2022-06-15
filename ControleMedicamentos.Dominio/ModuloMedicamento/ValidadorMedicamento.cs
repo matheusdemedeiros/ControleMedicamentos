@@ -56,7 +56,7 @@ namespace ControleMedicamentos.Dominio.ModuloMedicamento
             RuleFor(x => x.Validade)
                     .Custom((validade, context) =>
                     {
-                        if (validade.Date < DateTime.Now)
+                        if (validade.Date < DateTime.Now.Date)
                         {
                             context.AddFailure("O campo 'Validade do medicamento' deve conter uma data váliada!");
                         }

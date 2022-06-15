@@ -12,13 +12,17 @@ namespace ControleMedicamentos.Dominio.ModuloMedicamento
 
         }
 
-        public Medicamento(string nome, string descricao, string lote, DateTime validade)
+        public Medicamento(string nome, string descricao, string lote,
+            DateTime validade, Fornecedor fornecedor, int quantidadeDisponivel)
         {
             Nome = nome;
             Descricao = descricao;
             Lote = lote;
             Validade = validade;
+            Fornecedor = fornecedor;
+            QuantidadeDisponivel = quantidadeDisponivel;
             Requisicoes = new List<Requisicao>();
+
         }
 
         public string Nome { get; set; }

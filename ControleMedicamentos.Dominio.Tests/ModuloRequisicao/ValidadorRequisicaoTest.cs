@@ -8,7 +8,7 @@ namespace ControleMedicamentos.Dominio.Tests.ModuloRequisicao
     public class ValidadorRequisicaoTest
     {
         [TestMethod]
-        public void Medicaento_da_requisicao_deve_ser_obrigatorio()
+        public void Medicamento_da_requisicao_deve_ser_obrigatorio()
         {
 
         }
