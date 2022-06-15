@@ -73,6 +73,7 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloFornecedor
             WHERE
                     [ID] = @ID";
 
+       
         #endregion
 
         public ValidationResult Inserir(Fornecedor novoRegistro)

@@ -12,6 +12,15 @@ namespace ControleMedicamentos.Dominio.ModuloMedicamento
 
         }
 
+        public Medicamento(string nome, string descricao, string lote, DateTime validade)
+        {
+            Nome = nome;
+            Descricao = descricao;
+            Lote = lote;
+            Validade = validade;
+            Requisicoes = new List<Requisicao>();
+        }
+
         public string Nome { get; set; }
         
         public string Descricao { get; set; }
@@ -28,20 +37,38 @@ namespace ControleMedicamentos.Dominio.ModuloMedicamento
 
         public int QuantidadeRequisicoes { get { return Requisicoes.Count; } }
 
-        public Medicamento(string nome, string descricao, string lote, DateTime validade)
-        {
-            Nome = nome;
-            Descricao = descricao;
-            Lote = lote;
-            Validade = validade;
-            Requisicoes = new List<Requisicao>();
-        }
-
         public override string ToString()
         {
             return $"Id {Id} - Nome: {Nome} - Descrição: {Descricao} - Lote: {Lote} - Validade: {Validade} - Fornecedor: {Fornecedor.Nome}";
         }
 
+        public override bool Equals(object obj)
+        {
+            return obj is Medicamento medicamento &&
+                   Id == medicamento.Id &&
+                   Nome == medicamento.Nome &&
+                   Descricao == medicamento.Descricao &&
+                   Lote == medicamento.Lote &&
+                   Validade == medicamento.Validade &&
+                   QuantidadeDisponivel == medicamento.QuantidadeDisponivel &&
+                   EqualityComparer<List<Requisicao>>.Default.Equals(Requisicoes, medicamento.Requisicoes) &&
+                   EqualityComparer<Fornecedor>.Default.Equals(Fornecedor, medicamento.Fornecedor) &&
+                   QuantidadeRequisicoes == medicamento.QuantidadeRequisicoes;
+        }
 
+        public override int GetHashCode()
+        {
+            HashCode hash = new HashCode();
+            hash.Add(Id);
+            hash.Add(Nome);
+            hash.Add(Descricao);
+            hash.Add(Lote);
+            hash.Add(Validade);
+            hash.Add(QuantidadeDisponivel);
+            hash.Add(Requisicoes);
+            hash.Add(Fornecedor);
+            hash.Add(QuantidadeRequisicoes);
+            return hash.ToHashCode();
+        }
     }
 }
