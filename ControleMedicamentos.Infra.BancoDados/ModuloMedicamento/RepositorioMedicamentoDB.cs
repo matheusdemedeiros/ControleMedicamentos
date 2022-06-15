@@ -13,7 +13,6 @@ namespace ControleMedicamento.Infra.BancoDados.ModuloMedicamento
 {
     public class RepositorioMedicamentoDB : RepositorioBaseDB
     {
-
         #region SQL QUERIES
 
         private const string sqlInserir =
@@ -257,8 +256,5 @@ namespace ControleMedicamento.Infra.BancoDados.ModuloMedicamento
         }
 
         #endregion
-
-
-
     }
 }
