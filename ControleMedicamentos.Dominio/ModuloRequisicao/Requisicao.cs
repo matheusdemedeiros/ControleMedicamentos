@@ -13,6 +13,16 @@ namespace ControleMedicamentos.Dominio.ModuloRequisicao
 
         }
 
+        public Requisicao(Medicamento medicamento, Paciente paciente,
+            int qtdMedicamento, DateTime data, Funcionario funcionario)
+        {
+            Medicamento = medicamento;
+            Paciente = paciente;
+            QtdMedicamento = qtdMedicamento;
+            Data = data;
+            Funcionario = funcionario;
+        }
+
         public Medicamento Medicamento { get; set; }
 
         public Paciente Paciente { get; set; }

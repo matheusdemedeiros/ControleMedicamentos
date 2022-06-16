@@ -16,8 +16,8 @@ namespace ControleMedicamentos.Dominio.ModuloRequisicao
                   .NotEmpty().WithMessage("O campo 'Paciente da requisição' é obrigatório!");
 
             RuleFor(x => x.Funcionario)
-                  .NotNull().WithMessage("O campo 'Funcuionário da requisição' é obrigatório!")
-                  .NotEmpty().WithMessage("O campo 'Funcuionário da requisição' é obrigatório!");
+                  .NotNull().WithMessage("O campo 'Funcionário da requisição' é obrigatório!")
+                  .NotEmpty().WithMessage("O campo 'Funcionário da requisição' é obrigatório!");
 
             RuleFor(x => x.QtdMedicamento)
                 .GreaterThan(0)
@@ -30,9 +30,9 @@ namespace ControleMedicamentos.Dominio.ModuloRequisicao
             RuleFor(x => x.Data)
                     .Custom((data, context) =>
                     {
-                        if (data.Date < DateTime.Now)
+                        if (data.Date < DateTime.Now.Date)
                         {
-                            context.AddFailure("O campo 'Data da requisição' deve conter uma data váliada!");
+                            context.AddFailure("O campo 'Data da requisição' deve conter uma data válida!");
                         }
                     });
         }
