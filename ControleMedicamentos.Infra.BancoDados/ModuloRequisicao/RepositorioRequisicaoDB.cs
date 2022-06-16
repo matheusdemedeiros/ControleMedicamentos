@@ -78,7 +78,7 @@ namespace ControleRequisicaos.Infra.BancoDados.ModuloRequisicao
                 [ID] = @ID";
 
         private const string sqlCarregarRequisicoesMedicamento =
-           @"SELECT 
+            @"SELECT 
 	            [ID],
                 [FUNCIONARIO_ID],
                 [PACIENTE_ID],
@@ -263,7 +263,7 @@ namespace ControleRequisicaos.Infra.BancoDados.ModuloRequisicao
             return repositorioMedicamento.SelecionarPorId(idMedicamento);
         }
         
-        private Funcionario CarregarFuncuionario(int idFuncionario)
+        private Funcionario CarregarFuncionario(int idFuncionario)
         {
             var repositorioFuncionario = new RepositorioFuncionarioDB();
 
@@ -288,7 +288,7 @@ namespace ControleRequisicaos.Infra.BancoDados.ModuloRequisicao
 
 
             Medicamento medicamento = CarregarMedicamento(idMedicamento);
-            Funcionario funcionario = CarregarFuncuionario(idFuncionario);
+            Funcionario funcionario = CarregarFuncionario(idFuncionario);
             Paciente paciente = CarregarPaciente(idPaciente);
 
             var requisicao = new Requisicao()

@@ -31,8 +31,8 @@ namespace ControleMedicamento.Infra.BancoDados.ModuloMedicamento
 				    @DESCRICAO,
 				    @LOTE,
 				    @VALIDADE,
-				    @QUANTIDADEDISPONIVEL,
-				    @FORNECEDOR_ID]
+				    @QUANTIDADE_DISPONIVEL,
+				    @FORNECEDOR_ID
 		       );SELECT SCOPE_IDENTITY();";
 
         private const string sqlEditar =
@@ -42,7 +42,7 @@ namespace ControleMedicamento.Infra.BancoDados.ModuloMedicamento
 	                [DESCRICAO] = @DESCRICAO,
 	                [LOTE] = @LOTE,
 	                [VALIDADE] = @VALIDADE,
-	                [QUANTIDADEDISPONIVEL] = @QUANTIDADEDISPONIVEL,
+	                [QUANTIDADEDISPONIVEL] = @QUANTIDADE_DISPONIVEL,
 	                [FORNECEDOR_ID] = @FORNECEDOR_ID
                 WHERE
 		            [ID] = @ID;";
@@ -234,7 +234,7 @@ namespace ControleMedicamento.Infra.BancoDados.ModuloMedicamento
             var descricao = Convert.ToString(leitorMedicamento["DESCRICAO"]);
             var lote = Convert.ToString(leitorMedicamento["LOTE"]);
             var validade = Convert.ToDateTime(leitorMedicamento["VALIDADE"]);
-            var qtdDisponivel = Convert.ToInt32(leitorMedicamento["QUANTIDADE_DISPONIVEL"]);
+            var qtdDisponivel = Convert.ToInt32(leitorMedicamento["QUANTIDADEDISPONIVEL"]);
             var idFornecedor = Convert.ToInt32(leitorMedicamento["FORNECEDOR_ID"]);
 
             Fornecedor fornecedor = CarregarFornecedor(idFornecedor);
@@ -247,7 +247,7 @@ namespace ControleMedicamento.Infra.BancoDados.ModuloMedicamento
                 Lote = lote,
                 Validade = validade,
                 QuantidadeDisponivel = qtdDisponivel,
-                Fornecedor = fornecedor,
+                Fornecedor = fornecedor
             };
 
             medicamento.Requisicoes = CarregarRequisicoes(medicamento);

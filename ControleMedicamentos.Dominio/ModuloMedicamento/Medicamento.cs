@@ -9,7 +9,7 @@ namespace ControleMedicamentos.Dominio.ModuloMedicamento
     {
         public Medicamento()
         {
-
+            Requisicoes = new List<Requisicao>();
         }
 
         public Medicamento(string nome, string descricao, string lote,
@@ -48,16 +48,20 @@ namespace ControleMedicamentos.Dominio.ModuloMedicamento
 
         public override bool Equals(object obj)
         {
-            return obj is Medicamento medicamento &&
+
+            bool retorno = false;
+
+            retorno = obj is Medicamento medicamento &&
                    Id == medicamento.Id &&
                    Nome == medicamento.Nome &&
                    Descricao == medicamento.Descricao &&
                    Lote == medicamento.Lote &&
                    Validade == medicamento.Validade &&
                    QuantidadeDisponivel == medicamento.QuantidadeDisponivel &&
-                   EqualityComparer<List<Requisicao>>.Default.Equals(Requisicoes, medicamento.Requisicoes) &&
-                   EqualityComparer<Fornecedor>.Default.Equals(Fornecedor, medicamento.Fornecedor) &&
                    QuantidadeRequisicoes == medicamento.QuantidadeRequisicoes;
+
+            return retorno;
+        
         }
 
         public override int GetHashCode()
