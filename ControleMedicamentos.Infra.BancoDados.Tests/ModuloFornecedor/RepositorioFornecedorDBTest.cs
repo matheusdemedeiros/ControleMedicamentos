@@ -11,11 +11,16 @@ namespace ControleMedicamentos.Infra.BancoDados.Tests.ModuloFornecedor
     {
         public RepositorioFornecedorDBTest()
         {
-            string sql =
+            string sql1 =
+             @"DELETE FROM TBMEDICAMENTO;
+                  DBCC CHECKIDENT (TBMEDICAMENTO, RESEED, 0)";
+            
+            string sql2 =
              @"DELETE FROM TBFORNECEDOR;
                   DBCC CHECKIDENT (TBFORNECEDOR, RESEED, 0)";
 
-            DB.ExecutarSql(sql);
+            DB.ExecutarSql(sql1);
+            DB.ExecutarSql(sql2);
         }
 
         [TestMethod]

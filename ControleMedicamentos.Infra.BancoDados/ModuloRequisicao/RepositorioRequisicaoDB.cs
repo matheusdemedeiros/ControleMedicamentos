@@ -249,11 +249,11 @@ namespace ControleRequisicaos.Infra.BancoDados.ModuloRequisicao
 
         private void ConfigurarParametrosRequisicao(Requisicao novoRegistro, SqlCommand comando)
         {
-            comando.Parameters.AddWithValue("FUNCIONARIO_ID",novoRegistro.Funcionario.Id);
-            comando.Parameters.AddWithValue("MEDICAMENTO_ID",novoRegistro.Medicamento.Id);
-            comando.Parameters.AddWithValue("PACIENTE_ID",novoRegistro.Paciente.Id);
-            comando.Parameters.AddWithValue("QUANTIDADEMEDICAMENTO",novoRegistro.QtdMedicamento);
-            comando.Parameters.AddWithValue("DATA",novoRegistro.Data);
+            comando.Parameters.AddWithValue("FUNCIONARIO_ID", novoRegistro.Funcionario.Id);
+            comando.Parameters.AddWithValue("MEDICAMENTO_ID", novoRegistro.Medicamento.Id);
+            comando.Parameters.AddWithValue("PACIENTE_ID", novoRegistro.Paciente.Id);
+            comando.Parameters.AddWithValue("QUANTIDADEMEDICAMENTO", novoRegistro.QtdMedicamento);
+            comando.Parameters.AddWithValue("DATA", novoRegistro.Data);
         }
 
         private Medicamento CarregarMedicamento(int idMedicamento)
@@ -262,7 +262,7 @@ namespace ControleRequisicaos.Infra.BancoDados.ModuloRequisicao
 
             return repositorioMedicamento.SelecionarPorId(idMedicamento);
         }
-        
+
         private Funcionario CarregarFuncionario(int idFuncionario)
         {
             var repositorioFuncionario = new RepositorioFuncionarioDB();
@@ -300,8 +300,8 @@ namespace ControleRequisicaos.Infra.BancoDados.ModuloRequisicao
                 Funcionario = funcionario,
                 Paciente = paciente
             };
-            
-            return  requisicao;
+
+            return requisicao;
         }
 
         #endregion

@@ -247,10 +247,11 @@ namespace ControleMedicamento.Infra.BancoDados.ModuloMedicamento
                 Lote = lote,
                 Validade = validade,
                 QuantidadeDisponivel = qtdDisponivel,
-                Fornecedor = fornecedor
+                Fornecedor = fornecedor,
+                Requisicoes = new List<Requisicao>()
             };
-
-            medicamento.Requisicoes = CarregarRequisicoes(medicamento);
+            
+            //medicamento.Requisicoes = CarregarRequisicoes(medicamento);
 
             return medicamento;
         }

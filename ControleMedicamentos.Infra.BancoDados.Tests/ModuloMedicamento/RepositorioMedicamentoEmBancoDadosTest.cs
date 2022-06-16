@@ -31,11 +31,16 @@ namespace ControleMedicamento.Infra.BancoDados.Tests.ModuloMedicamento
 
         public RepositorioMedicamentoEmBancoDadosTest()
         {
-            string sql =
+            string sql1 =
+                @"DELETE FROM TBREQUISICAO;
+                  DBCC CHECKIDENT (TBREQUISICAO, RESEED, 0)";
+
+            string sql2 =
                 @"DELETE FROM TBMEDICAMENTO;
                   DBCC CHECKIDENT (TBMEDICAMENTO, RESEED, 0)";
 
-            DB.ExecutarSql(sql);
+            DB.ExecutarSql(sql1);
+            DB.ExecutarSql(sql2);
         }
 
         [TestMethod]

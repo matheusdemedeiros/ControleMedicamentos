@@ -6,7 +6,6 @@ namespace ControleMedicamentos.Dominio.Tests.ModuloFuncionario
     [TestClass]
     public class ValidadorFuncionarioTest
     {
-
         [TestMethod]
         public void Nome_do_funcionario_deve_ser_obrigatorio()
         {
