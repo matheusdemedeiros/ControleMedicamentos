@@ -212,7 +212,6 @@ namespace ControleMedicamentos.Infra.BancoDados.Tests.ModuloRequisicao
             List<Requisicao> requisicoesEncontradas = repositorio.SelecionarTodos();
 
             //assert
-
             Assert.IsNotNull(requisicoesEncontradas);
             Assert.AreEqual(2, requisicoesEncontradas.Count);
         }

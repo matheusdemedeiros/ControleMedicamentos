@@ -165,7 +165,11 @@ namespace ControleMedicamento.Infra.BancoDados.ModuloMedicamento
             Medicamento medicamento = null;
 
             if (leitorMedicamento.Read())
+            {
                 medicamento = ConverterParaMedicamento(leitorMedicamento);
+
+                CarregarRequisicoesMedicamento(medicamento);
+            }
 
             conexaoComBanco.Close();
 
@@ -187,6 +191,8 @@ namespace ControleMedicamento.Infra.BancoDados.ModuloMedicamento
             {
                 Medicamento medicamento = ConverterParaMedicamento(leitorMedicamento);
 
+                CarregarRequisicoesMedicamento(medicamento);
+
                 medicamentos.Add(medicamento);
             }
 
@@ -195,6 +201,18 @@ namespace ControleMedicamento.Infra.BancoDados.ModuloMedicamento
             return medicamentos;
 
         }
+
+        private void CarregarRequisicoesMedicamento(Medicamento medicamento)
+        {
+            var repositorioRequisicoes = new RepositorioRequisicaoDB();
+
+            List<Requisicao> requisicoes = new List<Requisicao>();
+
+            requisicoes = repositorioRequisicoes.SelecionarRequisicoesMedicamentoEspecifico(medicamento);
+
+            medicamento.Requisicoes = requisicoes;
+        }
+
 
         #region Métodos privados
 
@@ -250,8 +268,8 @@ namespace ControleMedicamento.Infra.BancoDados.ModuloMedicamento
                 Fornecedor = fornecedor,
                 Requisicoes = new List<Requisicao>()
             };
-            
-            //medicamento.Requisicoes = CarregarRequisicoes(medicamento);
+
+            medicamento.Requisicoes = CarregarRequisicoes(medicamento);
 
             return medicamento;
         }
